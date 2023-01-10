@@ -26,7 +26,7 @@ const Create1 = () => {
       <input type="text" value={brand}  onChange={(e)=>setBrand(e.target.value)}/><br/>
       <label>Price</label><br/>
       <input type="text" value={price}  onChange={(e)=>setPrice(e.target.value)}/><br/>
-      <button onClick={post1}>Post</button><br/>
+      <button onClick={post1}>Create new</button><br/>
     </form>
     </>
   )
