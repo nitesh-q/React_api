@@ -3,13 +3,13 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
-const url = 'api/v1/products/';
+const url = '/api/v1/products';
 const Home1 = () => {
     const [api_get, setApi] = useState([]);
 
     //api
     useEffect(() => {
-        console.log("hello from use effect")
+        console.log("hello from use effect from home component")
         axios.get(url, {
             method: 'GET',
             mode: 'cors',
@@ -26,15 +26,22 @@ const Home1 = () => {
             .then((res) => {
                 console.log(res);
                 setApi(res.data)
-            })
+            }).catch((error)=>{console.log(error)})
     }, [])
+
+    // deleting api data
+    const deleteapi=(a)=>{
+        alert("Delete?")
+        axios.delete(`/api/v1/products/${a}`).then((res)=>{console.log("delete?")}).catch((error)=>{console.log(error)})
+        window.location.reload()
+    }
 
     return (
         <>
             <table>
             <thead>
                 <tr>
-                    <th colSpan={6}><Link to='/create' style={{textDecoration:'none'}} className='color2'>New</Link></th>
+                    <th colSpan={6}><Link to='/create' style={{textDecoration:'none'}} className='color1'>New</Link></th>
                 </tr>
                 <tr>
                     <th>Name</th>
@@ -49,8 +56,8 @@ const Home1 = () => {
                         <td>{usr1.name}</td>
                         <td>{usr1.brand}</td>
                         <td>{usr1.price}</td>
-                        <td ><Link to='/update' style={{textDecoration:'none'}} className='color1'>Update</Link></td>
-                        <td ><Link to='/destroy' style={{textDecoration:'none'}} className='color2'>Destroy</Link></td>
+                        <td ><Link to={`/update/${usr1.id}`} className='underline'>Update</Link></td>
+                        <td className='underline1' onClick={()=>{deleteapi(usr1.id)}}>Destroy</td>
                         
                     </tr>
                 )}

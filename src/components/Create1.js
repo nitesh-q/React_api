@@ -15,6 +15,7 @@ const Create1 = () => {
       brand:brand,
       price:price
     }).then((res)=> {console.log(res)})
+    window.location.href='/';
   }
   console.log(name)
   return (

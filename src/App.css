@@ -8,12 +8,14 @@ td {
   margin-left: 116px;
 }
 
-.color1 {
+.underline{
   color: blue;
   font-weight: 600;
+  text-decoration: none;
 }
-
-.color2 {
+.underline1{
+  text-decoration: none;
+  cursor: pointer;
   color: red;
   font-weight: 600;
 }
